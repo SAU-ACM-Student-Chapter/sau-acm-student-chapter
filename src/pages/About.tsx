@@ -116,26 +116,24 @@ const About: React.FC = () => {
               {teamMembers
                 .filter(member => member.team === section.key)
                 .map((member, index) => (
-                  <div key={index} className="card">
-                    <div className="flex items-center space-x-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-[var(--accent)] flex items-center justify-center">
-                        {member.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-bold">{member.name}</h3>
-                        <p className="text-sm text-[var(--accent)]">{member.role}</p>
-                        {member.subRole && (
-                          <p className="text-sm">{member.subRole}</p>
-                        )}
-                      </div>
-                    </div>
-                    <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
+                  <div key={index} className="card flex flex-col items-center text-center p-4">
+                    <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4">
                       <img 
                         src={member.image} 
                         alt={member.name}
                         className="w-full h-full object-cover"
                       />
                     </div>
+                    <div className="flex items-center justify-center mb-2">
+                      <div className="w-10 h-10 rounded-lg bg-[var(--accent)] flex items-center justify-center">
+                        {member.icon}
+                      </div>
+                    </div>
+                    <h3 className="font-bold text-lg">{member.name}</h3>
+                    <p className="text-sm text-[var(--accent)]">{member.role}</p>
+                    {member.subRole && (
+                      <p className="text-sm text-[var(--text)]">{member.subRole}</p>
+                    )}
                   </div>
                 ))}
             </div>
