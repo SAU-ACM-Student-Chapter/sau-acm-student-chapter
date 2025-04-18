@@ -1,0 +1,36 @@
+# Set environment variable for cPanel deployment
+SetEnv DEPLOY_ENV cpanel
+
+# Handle Single Page Application routing
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Proper MIME types
+<IfModule mod_mime.c>
+  # JavaScript
+  AddType application/javascript js
+  AddType application/javascript mjs
+  
+  # CSS
+  AddType text/css css
+  
+  # JSON
+  AddType application/json json
+  
+  # SVG
+  AddType image/svg+xml svg svgz
+  
+  # Fonts
+  AddType application/font-woff woff
+  AddType application/font-woff2 woff2
+  AddType application/vnd.ms-fontobject eot
+  AddType application/x-font-ttf ttf
+  AddType application/x-font-ttf ttc
+  AddType font/opentype otf
+</IfModule>
